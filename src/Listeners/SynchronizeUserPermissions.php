@@ -1,6 +1,6 @@
 <?php
 
-namespace Klepak\LaravelAuth\Listeners;
+namespace Klepak\NovaAdAuth\Listeners;
 
 use Log;
 use Exception;

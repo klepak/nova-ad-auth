@@ -1,12 +1,21 @@
 <?php
 
-namespace Klepak\LaravelAuth;
+namespace Klepak\NovaAdAuth;
 
 use Illuminate\Support\ServiceProvider;
-use Klepak\LaravelAuth\Console\Commands\SyncRolesPermissions;
+use Klepak\NovaAdAuth\Console\Commands\SyncRolesPermissions;
 
-class AuthenticationServiceProvider extends ServiceProvider
+use Illuminate\Support\Facades\Route;
+
+class AdAuthenticationServiceProvider extends ServiceProvider
 {
+    /**
+     * This namespace is applied to package controller routes.
+     *
+     * @var string
+     */
+    protected $routeNamespace = 'Klepak\\NovaAdAuth\\Http\\Controllers';
+
     /**
      * Register services.
      *
@@ -25,9 +34,13 @@ class AuthenticationServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        $this->loadRoutesFrom(__DIR__.'/routes.php');
+
+        Route::middleware('web')
+             ->namespace($this->routeNamespace)
+             ->group(__DIR__.'/../routes/web.php');
 
         $this->publishes([
+            __DIR__.'/../config/auth.php' => config_path('auth.php'),
             __DIR__.'/../config/auth-roles.php' => config_path('auth-roles.php'),
             __DIR__.'/../config/ldap.php' => config_path('ldap.php'),
             __DIR__.'/../config/ldap_auth.php' => config_path('ldap_auth.php'),

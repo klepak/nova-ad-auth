@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'model' => Klepak\LaravelAuth\Models\User::class,
+    'model' => Klepak\NovaAdAuth\Models\User::class,
 
     /*
     |--------------------------------------------------------------------------

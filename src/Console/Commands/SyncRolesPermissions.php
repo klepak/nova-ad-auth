@@ -1,6 +1,6 @@
 <?php
 
-namespace Klepak\LaravelAuth\Console\Commands;
+namespace Klepak\NovaAdAuth\Console\Commands;
 
 use Illuminate\Console\Command;
 
