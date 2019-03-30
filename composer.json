@@ -1,21 +1,24 @@
 {
-    "name": "klepak/laravel-auth",
-    "type": "library",
+    "name": "klepak/laravel-nova-ad-auth",
+    "description": "Laravel Nova AD Authentication",
+    "type": "project",
     "authors": [
         {
             "name": "Knut Leborg",
             "email": "knut@lepa.no"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "adldap2/adldap2-laravel": "^6.0",
         "laravel/framework": "5.8.*",
         "spatie/laravel-permission": "^2.36",
-        "vyuldashev/nova-permission": "^1.4"
+        "vyuldashev/nova-permission": "^1.4",
+        "laravel/nova": "~2.0"
     },
     "autoload": {
         "psr-4": {
-            "Klepak\\LaravelAuth\\": "src"
+            "Klepak\\NovaAdAuth\\": "src/"
         }
     }
 }
