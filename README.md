@@ -3,6 +3,7 @@
   
 **Add package provider after Nova provider in app.php**  
 
+```php
     'providers' => [
     
         ...
@@ -10,9 +11,11 @@
         App\Providers\NovaServiceProvider::class,
         Klepak\NovaAdAuth\AdAuthenticationServiceProvider::class,
     ];
+```
 
 **Add to EventServiceProvider**  
 
+```php
     use Adldap\Laravel\Events\Synchronizing;
     use Klepak\NovaAdAuth\Listeners\SynchronizeUserPermissions;
 
@@ -26,19 +29,20 @@
             SynchronizeUserPermissions::class
         ],
     ];
-
+```
 
 **Add route middleware in Kernel.php**  
 
-    protected $routeMiddleware = [
-        
-        ...
+```php
+protected $routeMiddleware = [
+    
+    ...
 
-        'auth.sso' => \Adldap\Laravel\Middleware\WindowsAuthenticate::class,
-        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
-        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
-    ];
-
+    'auth.sso' => \Adldap\Laravel\Middleware\WindowsAuthenticate::class,
+    'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+    'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+];
+```
 
 **Publish assets**  
 
@@ -52,6 +56,7 @@
 - Copy your index.php to this directory, and add an additional ../ to all paths
 - Create file called web.config in this directory, with following contents:
 
+```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
         <system.webServer>
@@ -75,3 +80,4 @@
             </rewrite>
         </system.webServer>
     </configuration>
+```
