@@ -41,7 +41,7 @@ return [
          */
         'permissions' => [
             'GUARD' => [
-                'GROUP' => ['role1','role2'],
+                'GROUP' => ['permission1','permission2'],
             ]
         ],
 
