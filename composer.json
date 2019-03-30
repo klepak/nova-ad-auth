@@ -1,6 +1,6 @@
 {
     "name": "klepak/nova-ad-auth",
-    "description": "Laravel Nova AD Authentication",
+    "description": "Laravel Nova AD Authentication with SSO in IIS",
     "type": "project",
     "authors": [
         {
