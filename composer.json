@@ -1,0 +1,21 @@
+{
+    "name": "klepak/laravel-auth",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Knut Leborg",
+            "email": "knut@lepa.no"
+        }
+    ],
+    "require": {
+        "adldap2/adldap2-laravel": "^6.0",
+        "laravel/framework": "5.8.*",
+        "spatie/laravel-permission": "^2.36",
+        "vyuldashev/nova-permission": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Klepak\\LaravelAuth\\": "src"
+        }
+    }
+}
