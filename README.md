@@ -18,5 +18,5 @@ Add to routeMiddleware in Kernel.php
 'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
 'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
 
-**NOTE: this will replace your auth.php**
+**NOTE: this will replace your existing auth and adldap config**
 php artisan vendor:publish --provider="Klepak\NovaAdAuth\AdAuthenticationServiceProvider" --force

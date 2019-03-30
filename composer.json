@@ -1,5 +1,5 @@
 {
-    "name": "klepak/laravel-nova-ad-auth",
+    "name": "klepak/nova-ad-auth",
     "description": "Laravel Nova AD Authentication",
     "type": "project",
     "authors": [
