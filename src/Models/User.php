@@ -1,6 +1,6 @@
 <?php
 
-namespace Klepak\LaravelAuth\Models;
+namespace Klepak\NovaAdAuth\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
