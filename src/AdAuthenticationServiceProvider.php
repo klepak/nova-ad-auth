@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Klepak\NovaAdAuth\Console\Commands\SyncRolesPermissions;
 
 use Illuminate\Support\Facades\Route;
+use Klepak\NovaAdAuth\Console\Commands\VerifyPoliciesCommand;
+use Klepak\NovaAdAuth\Console\Commands\Scaffolding\StandardPolicyMakeCommand;
 
 class AdAuthenticationServiceProvider extends ServiceProvider
 {
@@ -48,7 +50,9 @@ class AdAuthenticationServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                SyncRolesPermissions::class
+                SyncRolesPermissions::class,
+                VerifyPoliciesCommand::class,
+                StandardPolicyMakeCommand::class,
             ]);
         }
     }

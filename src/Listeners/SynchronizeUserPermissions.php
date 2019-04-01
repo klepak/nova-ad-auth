@@ -75,6 +75,9 @@ class SynchronizeUserPermissions
         $verifiedRoles = [];
         foreach($roles as $guard => $guardRoles)
         {
+            if(!isset($verifiedRoles[$guard]))
+                $verifiedRoles[$guard] = [];
+
             foreach($guardRoles as $role)
             {
                 try
@@ -87,13 +90,16 @@ class SynchronizeUserPermissions
                     continue;
                 }
 
-                $verifiedRoles[] = $verifiedRole;
+                $verifiedRoles[$guard][] = $verifiedRole;
             }
         }
 
         $verifiedPermissions = [];
         foreach($permissions as $guard => $guardPermissions)
         {
+            if(!isset($verifiedPermissions[$guard]))
+                $verifiedPermissions[$guard] = [];
+
             foreach($guardPermissions as $permission)
             {
                 try
@@ -106,14 +112,30 @@ class SynchronizeUserPermissions
                     continue;
                 }
 
-                $verifiedPermissions[] = $verifiedPermission;
+                $verifiedPermissions[$guard][] = $verifiedPermission;
             }
         }
 
         try
         {
             Log::info("Syncing " . count($verifiedRoles) . " roles and " . count($verifiedPermissions) . " permissions for '{$event->user->getCommonName()}'.");
-            $event->model->syncRoles($verifiedRoles)->syncPermissions($verifiedPermissions);
+
+            if(isset($verifiedRoles['web']))
+                $event->model->syncRoles($verifiedRoles['web']);
+
+            if(isset($verifiedPermissions['web']))
+                $event->model->syncPermissions($verifiedPermissions['web']);
+
+            if(isset($verifiedRoles['api']) || isset($verifiedPermissions['api']))
+            {
+                $apiUser = $event->model->apiUser();
+
+                if(isset($verifiedRoles['api']))
+                    $apiUser->syncRoles($verifiedRoles['api']);
+
+                if(isset($verifiedPermissions['api']))
+                    $apiUser->syncPermissions($verifiedPermissions['api']);
+            }
         }
         catch(Exception $e)
         {

@@ -1,0 +1,39 @@
+<?php
+
+namespace DummyNamespace;
+
+use Klepak\NovaAdAuth\Policies\StandardPolicy;
+use Klepak\NovaAdAuth\Models\User;
+
+class DummyClass extends StandardPolicy
+{
+    public function view(User $user, $model)
+    {
+        return $this->can($user, $model, 'view');
+    }
+
+    public function create(User $user)
+    {
+        return $this->can($user, null, 'create');
+    }
+
+    public function update(User $user, $model)
+    {
+        return $this->can($user, $model, 'update');
+    }
+
+    public function delete(User $user, $model)
+    {
+        return $this->can($user, $model, 'delete');
+    }
+
+    public function restore(User $user, $model)
+    {
+        return $this->can($user, $model, 'restore');
+    }
+
+    public function forceDelete(User $user, $model)
+    {
+        return $this->can($user, $model, 'forceDelete');
+    }
+}

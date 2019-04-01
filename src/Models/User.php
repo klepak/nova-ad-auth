@@ -14,6 +14,8 @@ class User extends Authenticatable
 {
     use Notifiable, HasLdapUser, HasRoles;
 
+    protected $guard_name = 'web';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -41,5 +43,10 @@ class User extends Authenticatable
             if(!isset($model->attributes["api_token"]))
                 $model->attributes["api_token"] = Str::random(60);
         });
+    }
+
+    public function apiUser()
+    {
+        return ApiUser::find($this->id);
     }
 }

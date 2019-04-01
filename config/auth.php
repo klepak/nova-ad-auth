@@ -73,7 +73,7 @@ return [
 
         'api-users' => [
             'driver' => 'eloquent',
-            'model' => Klepak\NovaAdAuth\Models\User::class,
+            'model' => Klepak\NovaAdAuth\Models\ApiUser::class,
         ],
     ],
 
