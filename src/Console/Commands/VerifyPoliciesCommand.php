@@ -74,7 +74,7 @@ class VerifyPoliciesCommand extends Command
 
             $this->comment("[$guard]");
             if(!empty($guardMissingNodes))
-                $this->info('\''.implode('\',\'', $guardMissingNodes).'\'');
+                $this->info('\''.implode('\',\'', $guardMissingNodes).'\',');
             else
                 $this->info('No missing nodes');
 
