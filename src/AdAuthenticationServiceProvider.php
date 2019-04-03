@@ -41,6 +41,11 @@ class AdAuthenticationServiceProvider extends ServiceProvider
              ->namespace($this->routeNamespace)
              ->group(__DIR__.'/../routes/web.php');
 
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->routeNamespace)
+            ->group(__DIR__.'/../routes/api.php');
+
         $this->publishes([
             __DIR__.'/../config/auth.php' => config_path('auth.php'),
             __DIR__.'/../config/auth-roles.php' => config_path('auth-roles.php'),
