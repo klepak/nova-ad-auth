@@ -33,8 +33,6 @@ abstract class StandardPolicy
         if($model == null)
             $model = $this;
 
-        \Log::debug("MODEL", [$model]);
-
         $modelFullyQualifiedClass = get_class($model);
         $modelFqcSegments = explode('\\', $modelFullyQualifiedClass);
         $modelClassName = end($modelFqcSegments);
