@@ -49,4 +49,20 @@ class User extends Authenticatable
     {
         return ApiUser::find($this->id);
     }
+
+    /**
+     * @return bool
+     */
+    public function canImpersonate()
+    {
+        return $this->can('impersonate users');
+    }
+
+    /**
+     * @return bool
+     */
+    public function canBeImpersonated()
+    {
+        return !$this->hasRole('admin');
+    }
 }
