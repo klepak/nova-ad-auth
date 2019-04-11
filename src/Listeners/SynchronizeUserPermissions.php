@@ -128,7 +128,7 @@ class SynchronizeUserPermissions
 
             if(isset($verifiedRoles['api']) || isset($verifiedPermissions['api']))
             {
-                $apiUser = $event->model->apiUser();
+                $apiUser = $event->model->apiUser()->get()->first();
 
                 if($apiUser != null)
                 {

@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function apiUser()
     {
-        return ApiUser::find($this->id);
+        return $this->hasOne(ApiUser::class, 'id', 'id');
     }
 
     /**
