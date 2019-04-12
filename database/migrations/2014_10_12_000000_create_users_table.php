@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
                         ->unique()
                         ->nullable();
 
+            $table->string('type')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });
