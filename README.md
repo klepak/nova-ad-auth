@@ -16,7 +16,7 @@
 **Add to EventServiceProvider**  
 
 ```php
-    use Adldap\Laravel\Events\Synchronizing;
+    use Adldap\Laravel\Events\AuthenticatedWithWindows;
     use Klepak\NovaAdAuth\Listeners\SynchronizeUserPermissions;
 
     ...
@@ -25,7 +25,7 @@
         
         ...
 
-        Synchronizing::class => [
+        AuthenticatedWithWindows::class => [
             SynchronizeUserPermissions::class
         ],
     ];

@@ -5,7 +5,7 @@ namespace Klepak\NovaAdAuth\Listeners;
 use Log;
 use Exception;
 
-use Adldap\Laravel\Events\Synchronizing;
+use Adldap\Laravel\Events\AuthenticatedWithWindows;
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -17,11 +17,11 @@ class SynchronizeUserPermissions
     /**
      * Handle the event.
      *
-     * @param Synchronizing $event
+     * @param AuthenticatedWithWindows $event
      *
      * @return void
      */
-    public function handle(Synchronizing $event)
+    public function handle(AuthenticatedWithWindows $event)
     {
         info("Synchronizing user permissions for '{$event->user->getCommonName()}'.");
 
