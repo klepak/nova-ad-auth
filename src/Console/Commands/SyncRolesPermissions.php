@@ -46,10 +46,10 @@ class SyncRolesPermissions extends Command
         $permissions = config("auth-roles.permissions");
 
         if(count($roles) == 0)
-            echo "No roles in config\n";
+            $this->info("No roles in config\n");
 
         if(count($permissions) == 0)
-            echo "No permissions in config\n";
+            $this->info("No permissions in config\n");
 
         // check for missing roles
         $missingRoles = [];
@@ -92,7 +92,7 @@ class SyncRolesPermissions extends Command
             {
                 try
                 {
-                    #echo "Check $guard -> $permission\n";
+                    #$this->info("Check $guard -> $permission\n");
                     if(!isset($existingPermissions[$guard][$permission]))
                         $existingPermissions[$guard][$permission] = Permission::findByName($permission, $guard);
                 }
@@ -133,7 +133,7 @@ class SyncRolesPermissions extends Command
         {
             foreach($guardRoles as $roleName => $rolePermissions)
             {
-                echo "Sync permissions for $roleName - $guard\n";
+                $this->info("Sync permissions for $roleName - $guard\n");
                 $role = Role::findByName($roleName, $guard);
                 $role->syncPermissions($rolePermissions);
             }
