@@ -18,6 +18,7 @@
 ```php
     use Adldap\Laravel\Events\AuthenticatedWithWindows;
     use Klepak\NovaAdAuth\Listeners\SynchronizeUserPermissions;
+    use Klepak\NovaAdAuth\Listeners\SynchronizeUserThumbnail;
 
     ...
 
@@ -26,7 +27,8 @@
         ...
 
         AuthenticatedWithWindows::class => [
-            SynchronizeUserPermissions::class
+            SynchronizeUserPermissions::class,
+            SynchronizeUserThumbnail::class,
         ],
     ];
 ```
