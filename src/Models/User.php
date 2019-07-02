@@ -65,4 +65,31 @@ class User extends Authenticatable
     {
         return !$this->hasRole('admin');
     }
+
+    public function getAvatarPublicPath()
+    {
+        $avatarPath = $this->getAvatarPath();
+
+        return $avatarPath != null ? "/storage/$avatarPath" : "/img/unknown-user.png";
+    }
+
+    public function getAvatarPath()
+    {
+        if(!file_exists($this->getAvatarFullPath()))
+            return null;
+
+        return $this->getAvatarRelativePath();
+    }
+
+    public function getAvatarRelativePath($id = null)
+    {
+        $id = $id ?? $this->id;
+
+        return "user_thumbs/$id.png";
+    }
+
+    public function getAvatarFullPath()
+    {
+        return storage_path("app/public/{$this->getAvatarRelativePath()}");
+    }
 }
