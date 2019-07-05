@@ -63,7 +63,10 @@ class User extends Authenticatable
      */
     public function canBeImpersonated()
     {
-        return !$this->hasRole('admin');
+        if($this->hasRole('admin'))
+            return $this->id == auth()->user()->id;
+
+        return true;
     }
 
     public function getAvatarPublicPath()
