@@ -63,7 +63,7 @@ abstract class StandardPolicy
 
     public function viewAny($user)
     {
-        return $this->can($user, null, 'view');
+        return $this->view($user, null);
     }
 
 
